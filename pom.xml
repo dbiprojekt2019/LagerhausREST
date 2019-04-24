@@ -7,6 +7,13 @@
     <groupId>LagerhausREST</groupId>
     <artifactId>LagerhausREST</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
+            <version>1.5.2.RELEASE</version>
+        </dependency>
+    </dependencies>
 
 
 </project>
