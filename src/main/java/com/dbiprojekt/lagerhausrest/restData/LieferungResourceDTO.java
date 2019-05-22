@@ -7,10 +7,10 @@ import java.sql.Date;
 //import java.util.Date;
 
 @Data
-public class LieferungDTO {
+public class LieferungResourceDTO {
     private int lieferungsId;
     private int umfangInTonnen;
-    private Date datumEinlagerung;
+    private String datumEinlagerung;
     private int reifegradId;
     private int erntemonatId;
     private int lagerId;
