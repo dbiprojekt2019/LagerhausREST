@@ -13,6 +13,8 @@ import org.springframework.stereotype.Component;
 
 import java.sql.Date;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -90,14 +92,25 @@ public class LagerhausManager {
         Lieferung a = new Lieferung();
         a.setLagerId(1);
         a.setErntemonatId(1);
-        a.setDatumEinlagerung(Date.valueOf("01/01/2001"));
+        java.util.Date utilDate = null;
+        try {
+            utilDate = new SimpleDateFormat("dd.MM.yyyy").parse("01.01.2001");
+            a.setDatumEinlagerung(new Date(utilDate.getTime()));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         a.setUmfangInTonnen(25);
         a.setLieferungsId(1);
         a.setReifegradId(1);
         Lieferung b = new Lieferung();
         b.setLagerId(1);
         b.setErntemonatId(1);
-        b.setDatumEinlagerung(Date.valueOf("01/02/2001"));
+        try {
+            utilDate = new SimpleDateFormat("dd.MM.yyyy").parse("02.02.2002");
+            b.setDatumEinlagerung(new Date(utilDate.getTime()));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         b.setUmfangInTonnen(35);
         b.setLieferungsId(2);
         b.setReifegradId(1);

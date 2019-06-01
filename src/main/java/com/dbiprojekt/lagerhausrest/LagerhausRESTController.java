@@ -1,6 +1,5 @@
 package com.dbiprojekt.lagerhausrest;
 
-import com.dbiprojekt.lagerhausrest.data.Reifegrad;
 import com.dbiprojekt.lagerhausrest.dataServices.LagerhausDataService;
 import com.dbiprojekt.lagerhausrest.restData.ErntemonatResourceDTO;
 import com.dbiprojekt.lagerhausrest.restData.LagerhausResourceDTO;
@@ -14,7 +13,7 @@ import java.util.List;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/fum")
+@RequestMapping("/LagerhausREST")
 public class LagerhausRESTController {
 
     @Autowired
@@ -22,26 +21,22 @@ public class LagerhausRESTController {
 
     @RequestMapping(value = "/Lagerhaus", method = RequestMethod.GET)
     public HttpEntity<List<LagerhausResourceDTO>> getAllLagerhausObjects(){
-        List<LagerhausResourceDTO> foo = dataService.getAllLagerhausObjects();
-        return new HttpEntity<List<LagerhausResourceDTO>>(foo);
+        return new HttpEntity<>(dataService.getAllLagerhausObjects());
     }
 
     @RequestMapping(value = "/Lagerhaus/{lagerhausId}/Lieferung", method = RequestMethod.GET)
     public HttpEntity<List<LieferungResourceDTO>> getLieferungOfLagerhaus(@PathVariable("lagerhausId") int lagerhausId){
-        List<LieferungResourceDTO> foo = dataService.getLieferungOfLagerhaus(lagerhausId);
-        return new HttpEntity<List<LieferungResourceDTO>>(foo);
+        return new HttpEntity<>(dataService.getLieferungOfLagerhaus(lagerhausId));
     }
 
     @RequestMapping(value = "/Reifegrad/{reifegradId}", method = RequestMethod.GET)
     public ReifegradResourceDTO getReifegrad(@PathVariable("reifegradId") int reifegradId){
-        ReifegradResourceDTO r = dataService.getReifegrad(reifegradId);
-        return r;
+        return dataService.getReifegrad(reifegradId);
     }
 
     @RequestMapping(value = "/Erntemonat/{erntemonatId}", method = RequestMethod.GET)
     public ErntemonatResourceDTO getErntemonat(@PathVariable("erntemonatId") int erntemonatId){
-        ErntemonatResourceDTO e = dataService.getErntemonat(erntemonatId);
-        return e;
+        return dataService.getErntemonat(erntemonatId);
     }
 
     @RequestMapping(value = "/Lieferung/{lieferungId}", method = RequestMethod.POST)
