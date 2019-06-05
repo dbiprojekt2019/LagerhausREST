@@ -7,6 +7,7 @@ import com.dbiprojekt.lagerhausrest.data.Reifegrad;
 import com.dbiprojekt.lagerhausrest.exceptions.LagerhausDatabaseConnectionFailed;
 import com.dbiprojekt.lagerhausrest.exceptions.LagerhausDatabaseStatementFailed;
 import com.dbiprojekt.lagerhausrest.manager.database.DatabaseManager;
+import com.dbiprojekt.lagerhausrest.manager.database.DeliveryRepository;
 import com.dbiprojekt.lagerhausrest.manager.database.StoredProcedure;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -24,6 +25,10 @@ public class LagerhausManager {
 
     @Autowired
     DatabaseManager databaseManager;
+
+    @Autowired
+    DeliveryRepository deliveryRepository;
+
 
     public List<Lagerhaus> getAllLagerhausObjects() throws LagerhausDatabaseConnectionFailed, LagerhausDatabaseStatementFailed {
         /*
