@@ -39,9 +39,9 @@ public class LagerhausRESTController {
         return dataService.getErntemonat(erntemonatId);
     }
 
-    @RequestMapping(value = "/Lieferung/{lieferungId}", method = RequestMethod.POST)
-    public LieferungResourceDTO insertLieferung(@PathVariable("lieferungId") int lieferungId, @RequestBody LieferungResourceDTO lieferung){
-        return dataService.insertLieferung(lieferungId, lieferung);
+    @RequestMapping(value = "/Lieferung", method = RequestMethod.POST)
+    public LieferungResourceDTO insertLieferung(@RequestBody LieferungResourceDTO lieferung){
+        return dataService.insertLieferung(lieferung);
     }
 
     @RequestMapping(value = "/Lieferung/{lieferungId}", method = RequestMethod.PUT)

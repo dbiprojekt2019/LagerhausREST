@@ -12,7 +12,7 @@ import java.util.Date;
 @Table(name = "Delivery")
 public class Delivery {
 
-    protected Delivery(){}
+    public Delivery(){}
 
     public Delivery(int weight, Date dateOfDelivery, int maturityID, int harvestMonthID, int wareHouseID){
         this.Weight = weight;

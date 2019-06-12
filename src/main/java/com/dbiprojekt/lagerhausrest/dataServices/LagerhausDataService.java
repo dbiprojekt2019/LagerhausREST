@@ -1,9 +1,8 @@
 package com.dbiprojekt.lagerhausrest.dataServices;
 
-import com.dbiprojekt.lagerhausrest.data.Erntemonat;
-import com.dbiprojekt.lagerhausrest.data.Lagerhaus;
-import com.dbiprojekt.lagerhausrest.data.Lieferung;
-import com.dbiprojekt.lagerhausrest.data.Reifegrad;
+import com.dbiprojekt.lagerhausrest.data.*;
+import com.dbiprojekt.lagerhausrest.data.databasePOJOs.Delivery;
+import com.dbiprojekt.lagerhausrest.data.databasePOJOs.WareHouse;
 import com.dbiprojekt.lagerhausrest.exceptions.LagerhausDatabaseConnectionFailed;
 import com.dbiprojekt.lagerhausrest.exceptions.LagerhausDatabaseStatementFailed;
 import com.dbiprojekt.lagerhausrest.exceptions.runtimeException.LagerhausBadRequestException;
@@ -108,6 +107,22 @@ public class LagerhausDataService {
         return l;
     }
 
+    private Delivery convertLieferungDTOToDelivery(LieferungResourceDTO dto)
+    {
+        Delivery d = new Delivery();
+        d.setDeliveryID(dto.getLieferungsId());
+        d.setWeight(dto.getUmfangInTonnen());
+        try {
+            d.setDateOfDelivery(new SimpleDateFormat("dd.MM.yyyy").parse(dto.getDatumEinlagerung()));
+        } catch (ParseException e) {
+            throw new LagerhausBadRequestException("DatumEinlagerung is invalid");
+        }
+        d.setMaturityID(dto.getReifegradId());
+        d.setHarvestMonthID(dto.getErntemonatId());
+        d.setWareHouseID(dto.getLagerId());
+        return d;
+    }
+
     /*
     private Erntemonat convertErntemonatDTOToErntemonat(ErntemonatResourceDTO dto)
     {
@@ -163,11 +178,51 @@ public class LagerhausDataService {
         return dto;
     }
 
+    private LagerhausResourceDTO convertWareHouseToLagerhausResource(WareHouse wareHouse){
+        LagerhausResourceDTO dto = new LagerhausResourceDTO();
+        dto.setLagerId(wareHouse.getWareHouseId());
+        dto.setBezeichnung(wareHouse.getDescription());
+        return dto;
+    }
+
+    private LieferungResourceDTO convertDeliveryToLieferungResource(Delivery delivery){
+        LieferungResourceDTO dto = new LieferungResourceDTO();
+        dto.setLieferungsId(delivery.getDeliveryID());
+        dto.setUmfangInTonnen(delivery.getWeight());
+        dto.setDatumEinlagerung(new SimpleDateFormat("dd.MM.yyyy").format(delivery.getDateOfDelivery()));
+        dto.setReifegradId(delivery.getMaturityID());
+        dto.setErntemonatId(delivery.getHarvestMonthID());
+        dto.setLagerId(delivery.getWareHouseID());
+        return dto;
+    }
+
+    private ReifegradResourceDTO convertFullMaturityLevelToReifegradResource (FullMaturityLevel fullMaturityLevel) {
+        ReifegradResourceDTO dto = new ReifegradResourceDTO();
+        dto.setReifegradID(fullMaturityLevel.getMaturityLevel().getMaturityID());
+        dto.setMindestlagerdauerInTagen(fullMaturityLevel.getMaturityLevel().getMinStorageTime());
+        dto.setObstsortenBezeichnung(fullMaturityLevel.getKindOfFruit().getDescription());
+        return dto;
+    }
+
+    private ErntemonatResourceDTO convertFullHarvestMonthToErntemonatResource(FullHarvestMonth fullHarvestMonth) {
+        ErntemonatResourceDTO dto = new ErntemonatResourceDTO();
+        dto.setErntemonatId(fullHarvestMonth.getHarvestMonth().getHarvestMonthID());
+        dto.setBezeichnung(fullHarvestMonth.getHarvestMonth().getDescription());
+        dto.setAnzahlRegentage(fullHarvestMonth.getHarvestMonth().getNumberRainyDays());
+        dto.setAnzahlSonnentage(fullHarvestMonth.getHarvestMonth().getNumberSunnyDays());
+        dto.setAnbaugebietsBezeichner(fullHarvestMonth.getGrowingArea().getDescription());
+        dto.setFlaeche(fullHarvestMonth.getGrowingArea().getArea());
+        dto.setMeereshoehe(fullHarvestMonth.getGrowingArea().getSeaLevel());
+        return dto;
+    }
+
     //</editor-fold>
 
 
     public List<LagerhausResourceDTO> getAllLagerhausObjects() {
-        List<Lagerhaus> lagerhausList = null;
+
+        /*
+        List<WareHouse> lagerhausList = null;
         try {
             lagerhausList = manager.getAllLagerhausObjects();
         } catch (LagerhausDatabaseConnectionFailed lagerhausDatabaseConnectionFailed) {
@@ -183,11 +238,20 @@ public class LagerhausDataService {
         for(Lagerhaus l : lagerhausList){
             result.add(convertLagerhausToLagerhausResource(l));
         }
+         */
+
+        List<WareHouse> lagerhausList = manager.getAllWareHouseObjects();
+        List<LagerhausResourceDTO> result = new ArrayList<>();
+
+        for(WareHouse w : lagerhausList){
+            result.add(convertWareHouseToLagerhausResource(w));
+        }
 
         return result;
     }
 
     public List<LieferungResourceDTO> getLieferungOfLagerhaus(int lagerhausId) {
+        /*
         List<Lieferung> lieferungList = null;
         try {
             lieferungList = manager.getLieferungOfLagerhaus(lagerhausId);
@@ -206,9 +270,21 @@ public class LagerhausDataService {
         }
 
         return result;
+        */
+
+        List<Delivery> deliveryList = manager.getDeliveriesOfWareHouse(lagerhausId);
+
+        List<LieferungResourceDTO> result = new ArrayList<>();
+
+        for(Delivery d : deliveryList){
+            result.add(convertDeliveryToLieferungResource(d));
+        }
+
+        return result;
     }
 
     public ReifegradResourceDTO getReifegrad(int reifeId) {
+        /*
         Reifegrad reife = null;
         try {
             reife = manager.getReifegrad(reifeId);
@@ -221,12 +297,19 @@ public class LagerhausDataService {
         }
 
         return convertReifegradToReifegradResource(reife);
+                 */
+
+        return convertFullMaturityLevelToReifegradResource(
+                    manager.getFullMaturityLevel(reifeId)
+                );
     }
 
     public ErntemonatResourceDTO getErntemonat(int erntemonatId) {
-        Erntemonat monat = null;
 
         /*
+        Erntemonat monat = null;
+
+
         try {
             monat = manager.getErntemonat(erntemonatId);
         } catch (LagerhausDatabaseConnectionFailed lagerhausDatabaseConnectionFailed) {
@@ -236,17 +319,22 @@ public class LagerhausDataService {
             lagerhausDatabaseStatementFailed.printStackTrace();
             throw new LagerhausDatabaseException("Request to database failed");
         }
-        */
 
         monat = manager.getErntemonat(erntemonatId);
 
         return convertErntemonatToErntemonatResource(monat);
+                */
+
+        return convertFullHarvestMonthToErntemonatResource(
+                    manager.getFullHarvestMonth(erntemonatId)
+                );
     }
 
-    public LieferungResourceDTO insertLieferung(int lieferungId, LieferungResourceDTO lieferung) {
+    public LieferungResourceDTO insertLieferung(LieferungResourceDTO lieferung) {
+
+                /*
         Lieferung result = null;
 
-        /*
         try {
             result = manager.insertLieferung(lieferungId, convertLieferungDTOToLieferung(lieferung));
         } catch (LagerhausDatabaseConnectionFailed lagerhausDatabaseConnectionFailed) {
@@ -256,16 +344,21 @@ public class LagerhausDataService {
             lagerhausDatabaseStatementFailed.printStackTrace();
             throw new LagerhausDatabaseException("Request to database failed");
         }
-        */
+
         result = manager.insertLieferung(lieferungId, convertLieferungDTOToLieferung(lieferung));
 
         return convertLieferungToLieferungResource(result);
+                */
+
+        return convertDeliveryToLieferungResource(
+                manager.insertDelivery(convertLieferungDTOToDelivery(lieferung))
+        );
     }
 
     public LieferungResourceDTO updateLieferung(int lieferungId, LieferungResourceDTO lieferung) {
+        /*
         Lieferung result = null;
 
-        /*
         try {
             result = manager.updateLieferung(lieferungId, convertLieferungDTOToLieferung(lieferung));
         } catch (LagerhausDatabaseConnectionFailed lagerhausDatabaseConnectionFailed) {
@@ -275,15 +368,21 @@ public class LagerhausDataService {
             lagerhausDatabaseStatementFailed.printStackTrace();
             throw new LagerhausDatabaseException("Request to database failed");
         }
-        */
 
         result = manager.updateLieferung(lieferungId, convertLieferungDTOToLieferung(lieferung));
 
         return convertLieferungToLieferungResource(result);
+            */
+
+        return convertDeliveryToLieferungResource(
+                manager.updateDelivery(
+                        lieferungId,
+                        convertLieferungDTOToDelivery(lieferung)
+                ));
     }
 
     public void deleteLieferung(int lieferungId) {
-        manager.deleteLieferung(lieferungId);
+        manager.deleteDelivery(lieferungId);
     }
 }
 
