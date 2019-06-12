@@ -7,8 +7,7 @@ import com.dbiprojekt.lagerhausrest.data.Reifegrad;
 import com.dbiprojekt.lagerhausrest.exceptions.LagerhausDatabaseConnectionFailed;
 import com.dbiprojekt.lagerhausrest.exceptions.LagerhausDatabaseStatementFailed;
 import com.dbiprojekt.lagerhausrest.manager.database.DatabaseManager;
-import com.dbiprojekt.lagerhausrest.manager.database.DeliveryRepository;
-import com.dbiprojekt.lagerhausrest.manager.database.StoredProcedure;
+import com.dbiprojekt.lagerhausrest.manager.dbRepositories.DeliveryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -18,7 +17,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 @Component
 public class LagerhausManager {

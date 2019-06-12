@@ -7,12 +7,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a83521c0-b8d0-446d-b496-8360b0a10860" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/dbiprojekt/lagerhausrest/data/databasePOJOs/Delivery.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/dbiprojekt/lagerhausrest/manager/database/DeliveryRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dbiprojekt/lagerhausrest/data/databasePOJOs/GrowingArea.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dbiprojekt/lagerhausrest/data/databasePOJOs/HarvestMonth.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dbiprojekt/lagerhausrest/data/databasePOJOs/KindOfFruit.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dbiprojekt/lagerhausrest/data/databasePOJOs/MaturityLevel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dbiprojekt/lagerhausrest/data/databasePOJOs/WareHouse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dbiprojekt/lagerhausrest/manager/dbRepositories/GrowingAreaRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dbiprojekt/lagerhausrest/manager/dbRepositories/HarvestMonthRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dbiprojekt/lagerhausrest/manager/dbRepositories/KindOfFruitRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dbiprojekt/lagerhausrest/manager/dbRepositories/MaturityLevelRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dbiprojekt/lagerhausrest/manager/dbRepositories/WareHouseRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbiprojekt/lagerhausrest/data/databasePOJOs/Delivery.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbiprojekt/lagerhausrest/data/databasePOJOs/Delivery.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/dbiprojekt/lagerhausrest/manager/LagerhausManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbiprojekt/lagerhausrest/manager/LagerhausManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbiprojekt/lagerhausrest/manager/database/DeliveryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbiprojekt/lagerhausrest/manager/dbRepositories/DeliveryRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -27,44 +36,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/dbiprojekt/lagerhausrest/LagerhausRESTController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="639">
+            <state relative-caret-position="582">
               <caret line="52" column="78" selection-start-line="52" selection-start-column="78" selection-end-line="52" selection-end-column="78" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/dbiprojekt/lagerhausrest/manager/LagerhausManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="111" column="29" lean-forward="true" selection-start-line="111" selection-start-column="29" selection-end-line="111" selection-end-column="29" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/dbiprojekt/lagerhausrest/data/databasePOJOs/Delivery.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/dbiprojekt/lagerhausrest/manager/database/DeliveryRepository.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="1" lean-forward="true" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -87,46 +60,82 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/dbiprojekt/lagerhausrest/manager/dbRepositories/DeliveryRepository.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="370">
-              <caret line="103" column="21" selection-start-line="103" selection-start-column="21" selection-end-line="103" selection-end-column="21" />
+            <state relative-caret-position="136">
+              <caret line="8" column="21" lean-forward="true" selection-start-line="8" selection-end-line="9" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/dbiprojekt/lagerhausrest/manager/dbRepositories/GrowingAreaRepository.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="38" selection-start-line="4" selection-start-column="38" selection-end-line="4" selection-end-column="38" />
+            <state relative-caret-position="85">
+              <caret line="9" selection-start-line="9" selection-end-line="9" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/dbiprojekt/lagerhausrest/data/Lagerhaus.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/dbiprojekt/lagerhausrest/data/databasePOJOs/GrowingArea.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="5" lean-forward="true" selection-start-line="4" selection-start-column="5" selection-end-line="4" selection-end-column="5" />
+            <state relative-caret-position="136">
+              <caret line="8" column="26" selection-start-line="8" selection-start-column="26" selection-end-line="8" selection-end-column="26" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/LagerhausREST.iml">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/dbiprojekt/lagerhausrest/manager/dbRepositories/HarvestMonthRepository.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" column="41" selection-start-line="1" selection-start-column="41" selection-end-line="1" selection-end-column="41" />
+            <state relative-caret-position="85">
+              <caret line="9" selection-start-line="9" selection-end-line="9" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/dbiprojekt/lagerhausrest/manager/database/StoredProcedure.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/dbiprojekt/lagerhausrest/data/databasePOJOs/MaturityLevel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="23" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
+            <state relative-caret-position="136">
+              <caret line="8" column="28" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/dbiprojekt/lagerhausrest/manager/dbRepositories/KindOfFruitRepository.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="9" selection-start-line="9" selection-end-line="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/dbiprojekt/lagerhausrest/manager/dbRepositories/MaturityLevelRepository.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="9" selection-start-line="9" selection-end-line="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/dbiprojekt/lagerhausrest/manager/dbRepositories/WareHouseRepository.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="9" selection-start-line="9" selection-end-line="9" />
             </state>
           </provider>
         </entry>
@@ -174,12 +183,26 @@
         <option value="$PROJECT_DIR$/src/main/java/com/dbiprojekt/lagerhausrest/LagerhausRESTController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/dbiprojekt/lagerhausrest/LagerhausRESTServiceMain.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/src/main/java/com/dbiprojekt/lagerhausrest/data/databasePOJOs/Erntemonat.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/dbiprojekt/lagerhausrest/data/databasePOJOs/Lieferung.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/dbiprojekt/lagerhausrest/data/databasePOJOs/Delivery.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/dbiprojekt/lagerhausrest/manager/database/DeliveryRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/dbiprojekt/lagerhausrest/manager/LagerhausManager.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
+        <option value="$PROJECT_DIR$/src/main/java/com/dbiprojekt/lagerhausrest/data/databasePOJOs/Delivery.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/dbiprojekt/lagerhausrest/data/databasePOJOs/HarvestMonth.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/dbiprojekt/lagerhausrest/data/databasePOJOs/GrowingArea.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/dbiprojekt/lagerhausrest/data/databasePOJOs/KindOfFruit.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/dbiprojekt/lagerhausrest/data/databasePOJOs/MaturityLevel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/dbiprojekt/lagerhausrest/data/databasePOJOs/WareHouse.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/dbiprojekt/lagerhausrest/manager/dbRepositories/KindOfFruit.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/dbiprojekt/lagerhausrest/manager/dbRepositories/MaturityLevel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/dbiprojekt/lagerhausrest/manager/dbRepositories/WareHouse.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/dbiprojekt/lagerhausrest/manager/dbRepositories/GrowingAreaRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/dbiprojekt/lagerhausrest/manager/dbRepositories/HarvestMonth.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/dbiprojekt/lagerhausrest/manager/dbRepositories/HarvestMonthRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/dbiprojekt/lagerhausrest/manager/dbRepositories/KindOfFruitRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/dbiprojekt/lagerhausrest/manager/dbRepositories/MaturityLevelRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/dbiprojekt/lagerhausrest/manager/dbRepositories/WareHouseRepository.java" />
       </list>
     </option>
   </component>
@@ -206,9 +229,9 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
-    <option name="width" value="977" />
+    <option name="width" value="1115" />
     <option name="height" value="1038" />
   </component>
   <component name="ProjectView">
@@ -216,8 +239,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -287,7 +310,7 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="lagerhausrest" type="462c0819:PsiDirectoryNode" />
               <item name="manager" type="462c0819:PsiDirectoryNode" />
-              <item name="database" type="462c0819:PsiDirectoryNode" />
+              <item name="dbRepositories" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="LagerhausREST" type="b2602c69:ProjectViewProjectNode" />
@@ -303,7 +326,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1559742482374" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1560321232169" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
@@ -311,15 +334,16 @@
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Files\Schule\DBI\Projekt-Lagerhaus\LagerhausREST_Git\LagerhausREST\src\main\java\com\dbiprojekt\lagerhausrest\restData" />
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.dbiprojekt.lagerhausrest.exceptions" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.dbiprojekt.lagerhausrest.manager.dbRepositories" />
       <recent name="com.dbiprojekt.lagerhausrest.data.databasePOJOs" />
       <recent name="com.dbiprojekt.lagerhausrest.exceptions.runtimeException" />
     </key>
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="com.dbiprojekt.lagerhausrest.exceptions" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Files\Schule\DBI\Projekt-Lagerhaus\LagerhausREST_Git\LagerhausREST\src\main\java\com\dbiprojekt\lagerhausrest\restData" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -414,14 +438,21 @@
       <option name="project" value="LOCAL" />
       <updated>1559419119123</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="--- Added ---&#10;Delivery, DeliveryRepository, application.properties -&gt; for JPA usage&#10;&#10;--- Updated ---&#10;LagerhausManager -&gt; for JPA usage&#10;pom.xml -&gt; for JPA usage and for maven-builds">
+      <created>1559742757386</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1559742757386</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-6" y="0" width="774" height="830" extended-state="0" />
+    <frame x="-6" y="0" width="892" height="830" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.40616247" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3533654" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -457,7 +488,8 @@
     <MESSAGE value="--- Added ---&#10;Method getAllLagerhaus to RESTController, DataService and LagerhausManager&#10;DatabaseManager and StoredProcedure for connection to the Database&#10;Exceptions&#10;--- Updated ---&#10;DTO and Resources were combined" />
     <MESSAGE value="--- Added ---&#10;CollumnsSingleton for Database-Access&#10;--- Updated ---&#10;new Methods added to RESTController and DataService&#10;REMOVED calls to DatabaseManager from LagerhausManager&#10;-&gt; swapping to JPA for DB-Calls" />
     <MESSAGE value="--- Updated ---&#10;pom.xml -&gt; changed dependencies&#10;LagerhausDataService -&gt; implemented ValidityChecks and Conversions&#10;LagerhausManager -&gt; changed temporary Lieferung Creation&#10;LagerhausRESTController -&gt; changed RequestMapping, shortened Methods" />
-    <option name="LAST_COMMIT_MESSAGE" value="--- Updated ---&#10;pom.xml -&gt; changed dependencies&#10;LagerhausDataService -&gt; implemented ValidityChecks and Conversions&#10;LagerhausManager -&gt; changed temporary Lieferung Creation&#10;LagerhausRESTController -&gt; changed RequestMapping, shortened Methods" />
+    <MESSAGE value="--- Added ---&#10;Delivery, DeliveryRepository, application.properties -&gt; for JPA usage&#10;&#10;--- Updated ---&#10;LagerhausManager -&gt; for JPA usage&#10;pom.xml -&gt; for JPA usage and for maven-builds" />
+    <option name="LAST_COMMIT_MESSAGE" value="--- Added ---&#10;Delivery, DeliveryRepository, application.properties -&gt; for JPA usage&#10;&#10;--- Updated ---&#10;LagerhausManager -&gt; for JPA usage&#10;pom.xml -&gt; for JPA usage and for maven-builds" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -567,26 +599,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbiprojekt/lagerhausrest/manager/database/DatabaseManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="37" selection-start-line="37" selection-end-line="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbiprojekt/lagerhausrest/AppConfiguration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="26" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/dbiprojekt/lagerhausrest/dataServices/LagerhausDataService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="476">
@@ -612,15 +624,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbiprojekt/lagerhausrest/manager/database/StoredProcedure.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="23" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbiprojekt/lagerhausrest/data/databasePOJOs/Erntemonat.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbiprojekt/lagerhausrest/data/Lagerhaus.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="5" selection-start-line="4" selection-start-column="5" selection-end-line="4" selection-end-column="5" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/LagerhausREST.iml">
       <provider selected="true" editor-type-id="text-editor">
@@ -629,27 +642,98 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbiprojekt/lagerhausrest/manager/database/StoredProcedure.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="23" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbiprojekt/lagerhausrest/manager/LagerhausManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="369">
+          <caret line="112" column="13" selection-start-line="112" selection-start-column="13" selection-end-line="112" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbiprojekt/lagerhausrest/manager/database/DatabaseManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="37" selection-start-line="37" selection-end-line="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="370">
+        <state relative-caret-position="528">
           <caret line="103" column="21" selection-start-line="103" selection-start-column="21" selection-end-line="103" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbiprojekt/lagerhausrest/AppConfiguration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="26" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
-          <caret line="4" column="38" selection-start-line="4" selection-start-column="38" selection-end-line="4" selection-end-column="38" />
+          <caret line="4" column="38" lean-forward="true" selection-start-line="4" selection-start-column="38" selection-end-line="4" selection-end-column="38" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbiprojekt/lagerhausrest/data/databasePOJOs/Erntemonat.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbiprojekt/lagerhausrest/data/Lagerhaus.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbiprojekt/lagerhausrest/data/databasePOJOs/Delivery.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="5" lean-forward="true" selection-start-line="4" selection-start-column="5" selection-end-line="4" selection-end-column="5" />
+        <state relative-caret-position="153">
+          <caret line="9" selection-start-line="9" selection-end-line="11" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbiprojekt/lagerhausrest/data/databasePOJOs/HarvestMonth.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="27" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbiprojekt/lagerhausrest/data/databasePOJOs/KindOfFruit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="26" selection-start-line="8" selection-start-column="26" selection-end-line="8" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#274#275#0" expanded="true" />
+            <element signature="e#305#306#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbiprojekt/lagerhausrest/data/databasePOJOs/WareHouse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="8" lean-forward="true" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#265#266#0" expanded="true" />
+            <element signature="e#311#312#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -667,7 +751,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/dbiprojekt/lagerhausrest/LagerhausRESTController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="639">
+        <state relative-caret-position="582">
           <caret line="52" column="78" selection-start-line="52" selection-start-column="78" selection-end-line="52" selection-end-column="78" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -675,33 +759,68 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbiprojekt/lagerhausrest/data/databasePOJOs/Delivery.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbiprojekt/lagerhausrest/data/databasePOJOs/GrowingArea.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+          <caret line="8" column="26" selection-start-line="8" selection-start-column="26" selection-end-line="8" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbiprojekt/lagerhausrest/manager/database/DeliveryRepository.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbiprojekt/lagerhausrest/data/databasePOJOs/MaturityLevel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="1" lean-forward="true" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
+        <state relative-caret-position="136">
+          <caret line="8" column="28" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbiprojekt/lagerhausrest/manager/LagerhausManager.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbiprojekt/lagerhausrest/manager/dbRepositories/DeliveryRepository.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="111" column="29" lean-forward="true" selection-start-line="111" selection-start-column="29" selection-end-line="111" selection-end-column="29" />
+        <state relative-caret-position="136">
+          <caret line="8" column="21" lean-forward="true" selection-start-line="8" selection-end-line="9" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbiprojekt/lagerhausrest/manager/dbRepositories/GrowingAreaRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbiprojekt/lagerhausrest/manager/dbRepositories/HarvestMonthRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbiprojekt/lagerhausrest/manager/dbRepositories/KindOfFruitRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbiprojekt/lagerhausrest/manager/dbRepositories/MaturityLevelRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbiprojekt/lagerhausrest/manager/dbRepositories/WareHouseRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
         </state>
       </provider>
     </entry>

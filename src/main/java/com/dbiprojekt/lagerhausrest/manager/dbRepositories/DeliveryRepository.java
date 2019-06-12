@@ -1,4 +1,4 @@
-package com.dbiprojekt.lagerhausrest.manager.database;
+package com.dbiprojekt.lagerhausrest.manager.dbRepositories;
 
 import com.dbiprojekt.lagerhausrest.data.databasePOJOs.Delivery;
 import org.springframework.data.repository.CrudRepository;
