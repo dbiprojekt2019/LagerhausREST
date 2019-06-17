@@ -14,21 +14,27 @@ public class Delivery {
 
     public Delivery(){}
 
-    public Delivery(int weight, Date dateOfDelivery, int maturityID, int harvestMonthID, int wareHouseID){
-        this.Weight = weight;
-        this.DateOfDelivery = dateOfDelivery;
-        this.MaturityID = maturityID;
-        this.HarvestMonthID = harvestMonthID;
-        this.WareHouseID = wareHouseID;
+    public Delivery(double weight, Date dateOfDelivery, int maturityID, int harvestMonthID, int wareHouseID){
+        this.weight = weight;
+        this.dateOfDelivery = dateOfDelivery;
+        this.maturityID = maturityID;
+        this.harvestMonthID = harvestMonthID;
+        this.wareHouseID = wareHouseID;
     }
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int DeliveryID;
+    @Column(name = "`DeliveryID`")
+    private int deliveryID;
 
-    private double Weight;
-    private Date DateOfDelivery;
-    private int MaturityID;
-    private int HarvestMonthID;
-    private int WareHouseID;
+    @Column(name = "`Weight`")
+    private double weight;
+    @Column(name = "`DateOfDelivery`")
+    private Date dateOfDelivery;
+    @Column(name = "`MaturityID`")
+    private int maturityID;
+    @Column(name = "`HarvestMonthID`")
+    private int harvestMonthID;
+    @Column(name = "`WareHouseID`")
+    private int wareHouseID;
 }

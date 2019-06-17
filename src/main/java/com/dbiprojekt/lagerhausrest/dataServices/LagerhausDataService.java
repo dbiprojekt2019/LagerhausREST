@@ -180,6 +180,7 @@ public class LagerhausDataService {
 
     private LagerhausResourceDTO convertWareHouseToLagerhausResource(WareHouse wareHouse){
         LagerhausResourceDTO dto = new LagerhausResourceDTO();
+        if (wareHouse == null) return null;
         dto.setLagerId(wareHouse.getWareHouseId());
         dto.setBezeichnung(wareHouse.getDescription());
         return dto;
@@ -187,6 +188,7 @@ public class LagerhausDataService {
 
     private LieferungResourceDTO convertDeliveryToLieferungResource(Delivery delivery){
         LieferungResourceDTO dto = new LieferungResourceDTO();
+        if (delivery == null) return null;
         dto.setLieferungsId(delivery.getDeliveryID());
         dto.setUmfangInTonnen(delivery.getWeight());
         dto.setDatumEinlagerung(new SimpleDateFormat("dd.MM.yyyy").format(delivery.getDateOfDelivery()));
@@ -198,6 +200,7 @@ public class LagerhausDataService {
 
     private ReifegradResourceDTO convertFullMaturityLevelToReifegradResource (FullMaturityLevel fullMaturityLevel) {
         ReifegradResourceDTO dto = new ReifegradResourceDTO();
+        if (fullMaturityLevel == null) return null;
         dto.setReifegradID(fullMaturityLevel.getMaturityLevel().getMaturityID());
         dto.setMindestlagerdauerInTagen(fullMaturityLevel.getMaturityLevel().getMinStorageTime());
         dto.setObstsortenBezeichnung(fullMaturityLevel.getKindOfFruit().getDescription());
@@ -206,6 +209,7 @@ public class LagerhausDataService {
 
     private ErntemonatResourceDTO convertFullHarvestMonthToErntemonatResource(FullHarvestMonth fullHarvestMonth) {
         ErntemonatResourceDTO dto = new ErntemonatResourceDTO();
+        if (fullHarvestMonth == null) return null;
         dto.setErntemonatId(fullHarvestMonth.getHarvestMonth().getHarvestMonthID());
         dto.setBezeichnung(fullHarvestMonth.getHarvestMonth().getDescription());
         dto.setAnzahlRegentage(fullHarvestMonth.getHarvestMonth().getNumberRainyDays());

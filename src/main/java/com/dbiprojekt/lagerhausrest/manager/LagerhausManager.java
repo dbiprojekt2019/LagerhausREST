@@ -217,6 +217,7 @@ public class LagerhausManager {
     public FullMaturityLevel getFullMaturityLevel(int maturityID) {
         FullMaturityLevel fullMaturityLevel = new FullMaturityLevel();
         MaturityLevel m = maturityLevelRepository.findOne(maturityID);
+        if (m == null) return null;
         fullMaturityLevel.setMaturityLevel(m);
         fullMaturityLevel.setKindOfFruit(kindOfFruitRepository.findOne(m.getFruitID()));
         return fullMaturityLevel;
@@ -225,6 +226,7 @@ public class LagerhausManager {
     public FullHarvestMonth getFullHarvestMonth(int harvestMonthID) {
         FullHarvestMonth fullHarvestMonth = new FullHarvestMonth();
         HarvestMonth h = harvestMonthRepository.findOne(harvestMonthID);
+        if (h == null) return null;
         fullHarvestMonth.setHarvestMonth(h);
         fullHarvestMonth.setGrowingArea(growingAreaRepository.findOne(h.getGrowingAreaID()));
         return fullHarvestMonth;
