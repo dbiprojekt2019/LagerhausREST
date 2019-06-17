@@ -70,6 +70,7 @@ public class LagerhausManager {
 
     public Delivery updateDelivery(int deliveryID, Delivery delivery) {
         Delivery d = deliveryRepository.findOne(deliveryID);
+        if (d == null) return null;
         d.setWeight(delivery.getWeight());
         d.setDateOfDelivery(delivery.getDateOfDelivery());
         d.setMaturityID(delivery.getMaturityID());

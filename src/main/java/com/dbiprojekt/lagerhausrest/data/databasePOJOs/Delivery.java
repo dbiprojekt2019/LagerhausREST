@@ -1,10 +1,7 @@
 package com.dbiprojekt.lagerhausrest.data.databasePOJOs;
 
 import lombok.Data;
-
 import javax.persistence.*;
-//import java.sql.Date;
-
 import java.util.Date;
 
 @Data

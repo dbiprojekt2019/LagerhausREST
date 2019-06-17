@@ -4,6 +4,7 @@ import com.dbiprojekt.lagerhausrest.data.*;
 import com.dbiprojekt.lagerhausrest.data.databasePOJOs.Delivery;
 import com.dbiprojekt.lagerhausrest.data.databasePOJOs.WareHouse;
 import com.dbiprojekt.lagerhausrest.exceptions.runtimeException.LagerhausBadRequestException;
+import com.dbiprojekt.lagerhausrest.exceptions.runtimeException.LagerhausResourceNotFoundException;
 import com.dbiprojekt.lagerhausrest.manager.LagerhausManager;
 import com.dbiprojekt.lagerhausrest.restData.ErntemonatResourceDTO;
 import com.dbiprojekt.lagerhausrest.restData.LagerhausResourceDTO;
@@ -12,7 +13,6 @@ import com.dbiprojekt.lagerhausrest.restData.ReifegradResourceDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -26,54 +26,18 @@ public class LagerhausDataService {
 
     //<editor-fold desc="Validity Checks">
 
-    private void checkLagerhausValid(LagerhausResourceDTO lagerhaus){
-
-        if (lagerhaus == null)
-            throw new LagerhausBadRequestException("Lagerhaus cannot be null");
-
-        if (lagerhaus.getLagerId() <= 0)
-            throw new LagerhausBadRequestException("LagerhausID is invalid");
-
-    }
     private void checkLieferungValid(LieferungResourceDTO lieferung){
 
         if (lieferung == null)
             throw new LagerhausBadRequestException("Lieferung cannot be null");
 
-        if (lieferung.getLieferungsId() <= 0)
-            throw new LagerhausBadRequestException("LieferungsID is invalid");
-
-        if (lieferung.getUmfangInTonnen() < 0)
-            throw new LagerhausBadRequestException("UmfangInTonnen is invalid");
+        if (lieferung.getUmfangInTonnen() <= 0)
+            throw new LagerhausBadRequestException("UmfangInTonnen is invalid (UmfangInTonnen needs to be bigger than 0)");
     }
-    private void checkReifegradValid(ReifegradResourceDTO reifegrad){
+    private void checkIDValid(int id){
+        if (id <= 0)
+            throw new LagerhausBadRequestException("ID is invalid (ID needs to be bigger than 0)");
 
-        if (reifegrad == null)
-            throw new LagerhausBadRequestException("Reifegrad cannot be null");
-
-        if (reifegrad.getReifegradID() <= 0)
-            throw new LagerhausBadRequestException("ReifegradID is invalid");
-
-        if (reifegrad.getMindestlagerdauerInTagen() < 0)
-            throw new LagerhausBadRequestException("MindestlagerdauerInTagen is invalid");
-
-    }
-    private void checkErntemonatValid(ErntemonatResourceDTO erntemonat){
-
-        if (erntemonat == null)
-            throw new LagerhausBadRequestException("Erntemonat cannot be null");
-
-        if (erntemonat.getErntemonatId() <= 0)
-            throw new LagerhausBadRequestException("ErntemonatId is invalid");
-
-        if (erntemonat.getAnzahlRegentage() < 0)
-            throw new LagerhausBadRequestException("AnzahlRegentage is invalid");
-
-        if (erntemonat.getAnzahlSonnentage() < 0)
-            throw new LagerhausBadRequestException("AnzahlSonnentage is invalid");
-
-        if (erntemonat.getFlaeche() < 0)
-            throw new LagerhausBadRequestException("Flaeche is invalid");
     }
 
     //</editor-fold>
@@ -102,7 +66,7 @@ public class LagerhausDataService {
 
     private LagerhausResourceDTO convertWareHouseToLagerhausResource(WareHouse wareHouse){
         LagerhausResourceDTO dto = new LagerhausResourceDTO();
-        if (wareHouse == null) return null;
+        if (wareHouse == null) throw new LagerhausResourceNotFoundException("WareHouse was not found!");
         dto.setLagerId(wareHouse.getWareHouseId());
         dto.setBezeichnung(wareHouse.getDescription());
         return dto;
@@ -110,7 +74,7 @@ public class LagerhausDataService {
 
     private LieferungResourceDTO convertDeliveryToLieferungResource(Delivery delivery){
         LieferungResourceDTO dto = new LieferungResourceDTO();
-        if (delivery == null) return null;
+        if (delivery == null) throw new LagerhausResourceNotFoundException("Delivery was not found!");
         dto.setLieferungsId(delivery.getDeliveryID());
         dto.setUmfangInTonnen(delivery.getWeight());
         dto.setDatumEinlagerung(new SimpleDateFormat("dd.MM.yyyy").format(delivery.getDateOfDelivery()));
@@ -122,7 +86,7 @@ public class LagerhausDataService {
 
     private ReifegradResourceDTO convertFullMaturityLevelToReifegradResource (FullMaturityLevel fullMaturityLevel) {
         ReifegradResourceDTO dto = new ReifegradResourceDTO();
-        if (fullMaturityLevel == null) return null;
+        if (fullMaturityLevel == null) throw new LagerhausResourceNotFoundException("MaturityLevel was not found!");
         dto.setReifegradID(fullMaturityLevel.getMaturityLevel().getMaturityID());
         dto.setMindestlagerdauerInTagen(fullMaturityLevel.getMaturityLevel().getMinStorageTime());
         dto.setObstsortenBezeichnung(fullMaturityLevel.getKindOfFruit().getDescription());
@@ -131,7 +95,7 @@ public class LagerhausDataService {
 
     private ErntemonatResourceDTO convertFullHarvestMonthToErntemonatResource(FullHarvestMonth fullHarvestMonth) {
         ErntemonatResourceDTO dto = new ErntemonatResourceDTO();
-        if (fullHarvestMonth == null) return null;
+        if (fullHarvestMonth == null) throw new LagerhausResourceNotFoundException("HarvestMonth was not found!");
         dto.setErntemonatId(fullHarvestMonth.getHarvestMonth().getHarvestMonthID());
         dto.setBezeichnung(fullHarvestMonth.getHarvestMonth().getDescription());
         dto.setAnzahlRegentage(fullHarvestMonth.getHarvestMonth().getNumberRainyDays());
@@ -158,6 +122,7 @@ public class LagerhausDataService {
     }
 
     public List<LieferungResourceDTO> getLieferungOfLagerhaus(int lagerhausId) {
+        checkIDValid(lagerhausId);
 
         List<Delivery> deliveryList = manager.getDeliveriesOfWareHouse(lagerhausId);
 
@@ -171,24 +136,31 @@ public class LagerhausDataService {
     }
 
     public ReifegradResourceDTO getReifegrad(int reifeId) {
+        checkIDValid(reifeId);
         return convertFullMaturityLevelToReifegradResource(
                     manager.getFullMaturityLevel(reifeId)
                 );
     }
 
     public ErntemonatResourceDTO getErntemonat(int erntemonatId) {
+        checkIDValid(erntemonatId);
         return convertFullHarvestMonthToErntemonatResource(
                     manager.getFullHarvestMonth(erntemonatId)
                 );
     }
 
     public LieferungResourceDTO insertLieferung(LieferungResourceDTO lieferung) {
+        checkLieferungValid(lieferung);
+
         return convertDeliveryToLieferungResource(
                 manager.insertDelivery(convertLieferungDTOToDelivery(lieferung))
         );
     }
 
     public LieferungResourceDTO updateLieferung(int lieferungId, LieferungResourceDTO lieferung) {
+        checkIDValid(lieferungId);
+        checkLieferungValid(lieferung);
+
         return convertDeliveryToLieferungResource(
                 manager.updateDelivery(
                         lieferungId,
@@ -197,6 +169,8 @@ public class LagerhausDataService {
     }
 
     public void deleteLieferung(int lieferungId) {
+        checkIDValid(lieferungId);
+
         manager.deleteDelivery(lieferungId);
     }
 }
