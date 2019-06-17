@@ -78,31 +78,7 @@ public class LagerhausDataService {
 
     //</editor-fold>
 
-    //<editor-fold desc="DTO to Object converters">
-
-    /*
-    private Lagerhaus convertLagerhausDTOToLagerhaus(LagerhausResourceDTO dto)
-    {
-        return null;
-    }
-    */
-
-    private Lieferung convertLieferungDTOToLieferung(LieferungResourceDTO dto)
-    {
-        Lieferung l = new Lieferung();
-        l.setLieferungsId(dto.getLieferungsId());
-        l.setUmfangInTonnen(dto.getUmfangInTonnen());
-        try {
-            java.util.Date utilDate =  new SimpleDateFormat("dd.MM.yyyy").parse(dto.getDatumEinlagerung());
-            l.setDatumEinlagerung(new Date(utilDate.getTime()));
-        } catch (ParseException e) {
-            throw new LagerhausBadRequestException("DatumEinlagerung is invalid");
-        }
-        l.setReifegradId(dto.getReifegradId());
-        l.setErntemonatId(dto.getErntemonatId());
-        l.setLagerId(dto.getLagerId());
-        return l;
-    }
+    //<editor-fold desc="DTO to Object converters">d
 
     private Delivery convertLieferungDTOToDelivery(LieferungResourceDTO dto)
     {
@@ -120,60 +96,9 @@ public class LagerhausDataService {
         return d;
     }
 
-    /*
-    private Erntemonat convertErntemonatDTOToErntemonat(ErntemonatResourceDTO dto)
-    {
-        return null;
-    }
-
-    private Reifegrad converReifegradDTOToReifegrad(ReifegradResourceDTO dto)
-    {
-        return null;
-    }
-    */
-
     //</editor-fold>
 
     //<editor-fold desc="Object to Resource converters">
-
-    private LagerhausResourceDTO convertLagerhausToLagerhausResource(Lagerhaus lagerhaus){
-        LagerhausResourceDTO dto = new LagerhausResourceDTO();
-        dto.setLagerId(lagerhaus.getLagerId());
-        dto.setBezeichnung(lagerhaus.getBezeichnung());
-        return dto;
-    }
-
-    private LieferungResourceDTO convertLieferungToLieferungResource(Lieferung lieferung){
-        LieferungResourceDTO dto = new LieferungResourceDTO();
-        dto.setLieferungsId(lieferung.getLieferungsId());
-        dto.setUmfangInTonnen(lieferung.getUmfangInTonnen());
-        java.util.Date utilDate = new java.util.Date(lieferung.getDatumEinlagerung().getTime());
-        dto.setDatumEinlagerung(new SimpleDateFormat("dd.MM.yyyy").format(utilDate));
-        dto.setReifegradId(lieferung.getReifegradId());
-        dto.setErntemonatId(lieferung.getErntemonatId());
-        dto.setLagerId(lieferung.getLagerId());
-        return dto;
-    }
-
-    private ReifegradResourceDTO convertReifegradToReifegradResource (Reifegrad reifegrad) {
-        ReifegradResourceDTO dto = new ReifegradResourceDTO();
-        dto.setReifegradID(reifegrad.getReifegradID());
-        dto.setObstsortenBezeichnung(reifegrad.getObstsortenBezeichnung());
-        dto.setMindestlagerdauerInTagen(reifegrad.getMindestlagerdauerInTagen());
-        return dto;
-    }
-
-    private ErntemonatResourceDTO convertErntemonatToErntemonatResource(Erntemonat erntemonat) {
-        ErntemonatResourceDTO dto = new ErntemonatResourceDTO();
-        dto.setErntemonatId(erntemonat.getErntemonatId());
-        dto.setBezeichnung(erntemonat.getBezeichnung());
-        dto.setAnzahlRegentage(erntemonat.getAnzahlRegentage());
-        dto.setAnzahlSonnentage(erntemonat.getAnzahlSonnentage());
-        dto.setAnbaugebietsBezeichner(erntemonat.getAnbaugebietsBezeichner());
-        dto.setFlaeche(erntemonat.getFlaeche());
-        dto.setMeereshoehe(erntemonat.getMeereshoehe());
-        return dto;
-    }
 
     private LagerhausResourceDTO convertWareHouseToLagerhausResource(WareHouse wareHouse){
         LagerhausResourceDTO dto = new LagerhausResourceDTO();
@@ -222,25 +147,6 @@ public class LagerhausDataService {
 
     public List<LagerhausResourceDTO> getAllLagerhausObjects() {
 
-        /*
-        List<WareHouse> lagerhausList = null;
-        try {
-            lagerhausList = manager.getAllLagerhausObjects();
-        } catch (LagerhausDatabaseConnectionFailed lagerhausDatabaseConnectionFailed) {
-            lagerhausDatabaseConnectionFailed.printStackTrace();
-            throw new LagerhausDatabaseException("Database connection failed");
-        } catch (LagerhausDatabaseStatementFailed lagerhausDatabaseStatementFailed) {
-            lagerhausDatabaseStatementFailed.printStackTrace();
-            throw new LagerhausDatabaseException("Request to database failed");
-        }
-
-        List<LagerhausResourceDTO> result = new ArrayList<>();
-
-        for(Lagerhaus l : lagerhausList){
-            result.add(convertLagerhausToLagerhausResource(l));
-        }
-         */
-
         List<WareHouse> lagerhausList = manager.getAllWareHouseObjects();
         List<LagerhausResourceDTO> result = new ArrayList<>();
 
@@ -252,26 +158,6 @@ public class LagerhausDataService {
     }
 
     public List<LieferungResourceDTO> getLieferungOfLagerhaus(int lagerhausId) {
-        /*
-        List<Lieferung> lieferungList = null;
-        try {
-            lieferungList = manager.getLieferungOfLagerhaus(lagerhausId);
-        } catch (LagerhausDatabaseConnectionFailed lagerhausDatabaseConnectionFailed) {
-            lagerhausDatabaseConnectionFailed.printStackTrace();
-            throw new LagerhausDatabaseException("Database connection failed");
-        } catch (LagerhausDatabaseStatementFailed lagerhausDatabaseStatementFailed) {
-            lagerhausDatabaseStatementFailed.printStackTrace();
-            throw new LagerhausDatabaseException("Request to database failed");
-        }
-
-        List<LieferungResourceDTO> result = new ArrayList<>();
-
-        for(Lieferung l : lieferungList){
-            result.add(convertLieferungToLieferungResource(l));
-        }
-
-        return result;
-        */
 
         List<Delivery> deliveryList = manager.getDeliveriesOfWareHouse(lagerhausId);
 
@@ -285,96 +171,24 @@ public class LagerhausDataService {
     }
 
     public ReifegradResourceDTO getReifegrad(int reifeId) {
-        /*
-        Reifegrad reife = null;
-        try {
-            reife = manager.getReifegrad(reifeId);
-        } catch (LagerhausDatabaseConnectionFailed lagerhausDatabaseConnectionFailed) {
-            lagerhausDatabaseConnectionFailed.printStackTrace();
-            throw new LagerhausDatabaseException("Database connection failed");
-        } catch (LagerhausDatabaseStatementFailed lagerhausDatabaseStatementFailed) {
-            lagerhausDatabaseStatementFailed.printStackTrace();
-            throw new LagerhausDatabaseException("Request to database failed");
-        }
-
-        return convertReifegradToReifegradResource(reife);
-                 */
-
         return convertFullMaturityLevelToReifegradResource(
                     manager.getFullMaturityLevel(reifeId)
                 );
     }
 
     public ErntemonatResourceDTO getErntemonat(int erntemonatId) {
-
-        /*
-        Erntemonat monat = null;
-
-
-        try {
-            monat = manager.getErntemonat(erntemonatId);
-        } catch (LagerhausDatabaseConnectionFailed lagerhausDatabaseConnectionFailed) {
-            lagerhausDatabaseConnectionFailed.printStackTrace();
-            throw new LagerhausDatabaseException("Database connection failed");
-        } catch (LagerhausDatabaseStatementFailed lagerhausDatabaseStatementFailed) {
-            lagerhausDatabaseStatementFailed.printStackTrace();
-            throw new LagerhausDatabaseException("Request to database failed");
-        }
-
-        monat = manager.getErntemonat(erntemonatId);
-
-        return convertErntemonatToErntemonatResource(monat);
-                */
-
         return convertFullHarvestMonthToErntemonatResource(
                     manager.getFullHarvestMonth(erntemonatId)
                 );
     }
 
     public LieferungResourceDTO insertLieferung(LieferungResourceDTO lieferung) {
-
-                /*
-        Lieferung result = null;
-
-        try {
-            result = manager.insertLieferung(lieferungId, convertLieferungDTOToLieferung(lieferung));
-        } catch (LagerhausDatabaseConnectionFailed lagerhausDatabaseConnectionFailed) {
-            lagerhausDatabaseConnectionFailed.printStackTrace();
-            throw new LagerhausDatabaseException("Database connection failed");
-        } catch (LagerhausDatabaseStatementFailed lagerhausDatabaseStatementFailed) {
-            lagerhausDatabaseStatementFailed.printStackTrace();
-            throw new LagerhausDatabaseException("Request to database failed");
-        }
-
-        result = manager.insertLieferung(lieferungId, convertLieferungDTOToLieferung(lieferung));
-
-        return convertLieferungToLieferungResource(result);
-                */
-
         return convertDeliveryToLieferungResource(
                 manager.insertDelivery(convertLieferungDTOToDelivery(lieferung))
         );
     }
 
     public LieferungResourceDTO updateLieferung(int lieferungId, LieferungResourceDTO lieferung) {
-        /*
-        Lieferung result = null;
-
-        try {
-            result = manager.updateLieferung(lieferungId, convertLieferungDTOToLieferung(lieferung));
-        } catch (LagerhausDatabaseConnectionFailed lagerhausDatabaseConnectionFailed) {
-            lagerhausDatabaseConnectionFailed.printStackTrace();
-            throw new LagerhausDatabaseException("Database connection failed");
-        } catch (LagerhausDatabaseStatementFailed lagerhausDatabaseStatementFailed) {
-            lagerhausDatabaseStatementFailed.printStackTrace();
-            throw new LagerhausDatabaseException("Request to database failed");
-        }
-
-        result = manager.updateLieferung(lieferungId, convertLieferungDTOToLieferung(lieferung));
-
-        return convertLieferungToLieferungResource(result);
-            */
-
         return convertDeliveryToLieferungResource(
                 manager.updateDelivery(
                         lieferungId,
