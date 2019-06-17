@@ -8,7 +8,7 @@ import java.sql.Date;
 @Data
 public class Lieferung {
     private int lieferungsId;
-    private int umfangInTonnen;
+    private double umfangInTonnen;
     private Date datumEinlagerung;
     private int reifegradId;
     private int erntemonatId;

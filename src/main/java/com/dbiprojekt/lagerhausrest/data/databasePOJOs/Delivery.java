@@ -26,7 +26,7 @@ public class Delivery {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int DeliveryID;
 
-    private int Weight;
+    private double Weight;
     private Date DateOfDelivery;
     private int MaturityID;
     private int HarvestMonthID;

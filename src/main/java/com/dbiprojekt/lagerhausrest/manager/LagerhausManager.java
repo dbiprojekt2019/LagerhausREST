@@ -242,6 +242,7 @@ public class LagerhausManager {
         d.setMaturityID(delivery.getMaturityID());
         d.setHarvestMonthID(delivery.getHarvestMonthID());
         d.setWareHouseID(delivery.getWareHouseID());
+        deliveryRepository.save(d);
         return d;
     }
 

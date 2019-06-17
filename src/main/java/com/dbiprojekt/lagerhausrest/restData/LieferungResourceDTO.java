@@ -9,7 +9,7 @@ import java.sql.Date;
 @Data
 public class LieferungResourceDTO {
     private int lieferungsId;
-    private int umfangInTonnen;
+    private double umfangInTonnen;
     private String datumEinlagerung;
     private int reifegradId;
     private int erntemonatId;
