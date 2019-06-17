@@ -4,7 +4,6 @@ import com.dbiprojekt.lagerhausrest.data.*;
 import com.dbiprojekt.lagerhausrest.data.databasePOJOs.*;
 import com.dbiprojekt.lagerhausrest.exceptions.LagerhausDatabaseConnectionFailed;
 import com.dbiprojekt.lagerhausrest.exceptions.LagerhausDatabaseStatementFailed;
-import com.dbiprojekt.lagerhausrest.manager.database.DatabaseManager;
 import com.dbiprojekt.lagerhausrest.manager.dbRepositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

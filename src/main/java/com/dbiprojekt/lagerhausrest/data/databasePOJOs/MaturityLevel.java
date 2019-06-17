@@ -12,14 +12,14 @@ public class MaturityLevel {
     protected MaturityLevel(){}
 
     public MaturityLevel(int minStorageTime, int fruitID){
-        this.MinStorageTime = minStorageTime;
-        this.FruitID = fruitID;
+        this.minStorageTime = minStorageTime;
+        this.fruitID = fruitID;
     }
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int MaturityID;
+    private int maturityID;
 
-    private int MinStorageTime;
-    private int FruitID;
+    private int minStorageTime;
+    private int fruitID;
 }

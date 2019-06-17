@@ -12,17 +12,17 @@ public class GrowingArea {
     protected GrowingArea(){}
 
     public GrowingArea(String description, double area, double seaLevel){
-        this.Description = description;
-        this.Area = area;
-        this.SeaLevel = seaLevel;
+        this.description = description;
+        this.area = area;
+        this.seaLevel = seaLevel;
     }
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int GrowingAreaID;
+    private int growingAreaID;
 
-    private String Description;
-    private double Area;
-    private double SeaLevel;
+    private String description;
+    private double area;
+    private double seaLevel;
 
 }

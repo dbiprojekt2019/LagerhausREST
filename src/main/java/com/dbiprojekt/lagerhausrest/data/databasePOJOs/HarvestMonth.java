@@ -12,19 +12,19 @@ public class HarvestMonth {
     protected HarvestMonth(){}
 
     public HarvestMonth(String description, int numberRainyDays, int numberSunnyDays, int growingAreaID){
-        this.Description = description;
-        this.NumberRainyDays = numberRainyDays;
-        this.NumberSunnyDays = numberSunnyDays;
-        this.GrowingAreaID = growingAreaID;
+        this.description = description;
+        this.numberRainyDays = numberRainyDays;
+        this.numberSunnyDays = numberSunnyDays;
+        this.growingAreaID = growingAreaID;
     }
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int HarvestMonthID;
+    private int harvestMonthID;
 
-    private String Description;
-    private int NumberRainyDays;
-    private int NumberSunnyDays;
-    private int GrowingAreaID;
+    private String description;
+    private int numberRainyDays;
+    private int numberSunnyDays;
+    private int growingAreaID;
 
 }

@@ -12,12 +12,12 @@ public class WareHouse {
     protected WareHouse(){}
 
     public WareHouse(String description){
-        this.Description = description;
+        this.description = description;
     }
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int WareHouseId;
+    private int wareHouseId;
 
-    private String Description;
+    private String description;
 }

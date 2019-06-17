@@ -24,17 +24,11 @@ public class Delivery {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "`DeliveryID`")
     private int deliveryID;
 
-    @Column(name = "`Weight`")
     private double weight;
-    @Column(name = "`DateOfDelivery`")
     private Date dateOfDelivery;
-    @Column(name = "`MaturityID`")
     private int maturityID;
-    @Column(name = "`HarvestMonthID`")
     private int harvestMonthID;
-    @Column(name = "`WareHouseID`")
     private int wareHouseID;
 }

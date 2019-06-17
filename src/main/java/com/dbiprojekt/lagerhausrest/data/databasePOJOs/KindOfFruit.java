@@ -12,12 +12,12 @@ public class KindOfFruit {
     protected KindOfFruit(){}
 
     public KindOfFruit(String description){
-        this.Description = description;
+        this.description = description;
     }
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int FruitID;
+    private int fruitID;
 
-    private String Description;
+    private String description;
 }
