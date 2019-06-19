@@ -34,9 +34,19 @@ public class LagerhausRESTController {
         return dataService.getReifegrad(reifegradId);
     }
 
+    @RequestMapping(value = "/Reifegrad", method = RequestMethod.GET)
+    public HttpEntity<List<ReifegradResourceDTO>> getAllReifegradObjects(){
+        return new HttpEntity<>(dataService.getAllReifegradObjects());
+    }
+
     @RequestMapping(value = "/Erntemonat/{erntemonatId}", method = RequestMethod.GET)
     public ErntemonatResourceDTO getErntemonat(@PathVariable("erntemonatId") int erntemonatId){
         return dataService.getErntemonat(erntemonatId);
+    }
+
+    @RequestMapping(value = "/Erntemonat", method = RequestMethod.GET)
+    public HttpEntity<List<ErntemonatResourceDTO>> getAllErntemonatObjects(){
+        return new HttpEntity<>(dataService.getAllErntemonatObjects());
     }
 
     @RequestMapping(value = "/Lieferung", method = RequestMethod.POST)

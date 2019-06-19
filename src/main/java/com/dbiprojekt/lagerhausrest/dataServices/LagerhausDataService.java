@@ -142,11 +142,33 @@ public class LagerhausDataService {
                 );
     }
 
+    public List<ReifegradResourceDTO> getAllReifegradObjects() {
+        List<FullMaturityLevel> maturityLevels = manager.getAllFullMaturityLevels();
+        List<ReifegradResourceDTO> result = new ArrayList<>();
+
+        for(FullMaturityLevel fml : maturityLevels){
+            result.add(convertFullMaturityLevelToReifegradResource(fml));
+        }
+
+        return result;
+    }
+
     public ErntemonatResourceDTO getErntemonat(int erntemonatId) {
         checkIDValid(erntemonatId);
         return convertFullHarvestMonthToErntemonatResource(
                     manager.getFullHarvestMonth(erntemonatId)
                 );
+    }
+
+    public List<ErntemonatResourceDTO> getAllErntemonatObjects() {
+        List<FullHarvestMonth> harvestMonths = manager.getAllFullHarvestMonths();
+        List<ErntemonatResourceDTO> result = new ArrayList<>();
+
+        for(FullHarvestMonth fhm : harvestMonths){
+            result.add(convertFullHarvestMonthToErntemonatResource(fhm));
+        }
+
+        return result;
     }
 
     public LieferungResourceDTO insertLieferung(LieferungResourceDTO lieferung) {
@@ -173,6 +195,7 @@ public class LagerhausDataService {
 
         manager.deleteDelivery(lieferungId);
     }
+
 }
 
 

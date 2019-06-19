@@ -54,6 +54,19 @@ public class LagerhausManager {
         return fullMaturityLevel;
     }
 
+    public List<FullMaturityLevel> getAllFullMaturityLevels() {
+        List<FullMaturityLevel> fullMaturityLevels = new ArrayList<>();
+
+        for (MaturityLevel ml : maturityLevelRepository.findAll()) {
+            FullMaturityLevel fml = new FullMaturityLevel();
+            fml.setMaturityLevel(ml);
+            fml.setKindOfFruit(kindOfFruitRepository.findOne(ml.getFruitID()));
+            fullMaturityLevels.add(fml);
+        }
+
+        return fullMaturityLevels;
+    }
+
     public FullHarvestMonth getFullHarvestMonth(int harvestMonthID) {
         FullHarvestMonth fullHarvestMonth = new FullHarvestMonth();
         HarvestMonth h = harvestMonthRepository.findOne(harvestMonthID);
@@ -61,6 +74,19 @@ public class LagerhausManager {
         fullHarvestMonth.setHarvestMonth(h);
         fullHarvestMonth.setGrowingArea(growingAreaRepository.findOne(h.getGrowingAreaID()));
         return fullHarvestMonth;
+    }
+
+    public List<FullHarvestMonth> getAllFullHarvestMonths() {
+        List<FullHarvestMonth> fullHarvestMonths = new ArrayList<>();
+
+        for (HarvestMonth hm : harvestMonthRepository.findAll()) {
+            FullHarvestMonth fhm = new FullHarvestMonth();
+            fhm.setHarvestMonth(hm);
+            fhm.setGrowingArea(growingAreaRepository.findOne(hm.getGrowingAreaID()));
+            fullHarvestMonths.add(fhm);
+        }
+
+        return fullHarvestMonths;
     }
 
     public Delivery insertDelivery(Delivery delivery) {
